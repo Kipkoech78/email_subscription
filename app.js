@@ -10,8 +10,10 @@ app.use(express.static("public"));
 app.get("/", function(req,res){
     res.sendFile(__dirname+"/index.html");
     
-
 });
+
+
+
 app.post("/",function(req, res){
     const firstname= req.body.firstname;
     const lastname= req.body.secondname;
@@ -37,8 +39,7 @@ app.post("/",function(req, res){
     const url ="https://us22.api.mailchimp.com/3.0/lists/b0c58e0b7c";
     const options ={
         method:"POST",
-        auth: "kipkoech78:77e6ad8b82f435a1124c4768577e54a4-us22"
-
+        auth: process.env.MAILKEY,
     }
     const request = https.request(url, options, function(response){
 
@@ -69,11 +70,3 @@ app.listen(process.env.PORT || 3000,function(){
 console.log("server is running on port 3000.")
 });
 
-
-
-// api key
-
-// 77e6ad8b82f435a1124c4768577e54a4-us22
-
-
-// unique id b0c58e0b7c
